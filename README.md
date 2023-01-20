@@ -7,6 +7,7 @@ For execute the python locally you need create file in /run/secrets/do_token the
 ```sh
 echo "[YOUR_DOCKER_TOKEN]" > /run/secrets/do_token
 ```
+## Execute locally for develop
 Then you just need execute the next code in the directory of the repo cloned for up the aplication locally.
 
 ```sh
