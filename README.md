@@ -28,9 +28,22 @@ printf $DO_TOKEN | docker secret create do_token -
 >If you want know how create a token in your DigitalOcean account you can read [this documentation](https://docs.digitalocean.com/reference/api/create-personal-access-token/).
 
 ## Generate Image
+```sh
+docker build -t digitalocean_api .
+docker tag digitalocean_api vattenbit67/digitalocean_api:latest
+docker login docker.io
+docker push vattenbit67/digitalocean_api:latest
+```
 
 ## Run Container Locally
+```sh
+docker run -d -p 5000:5000 --name digitalocean_api digitalocean_api
+```
 
 ## Run Container with Swarm
-
+```sh
+docker service rm digitalocean_api
+docker service create --replicas 1 --name digitalocean_api \
+ -p 5000:5000 --secret do_token digitalocean_api
+```
 
